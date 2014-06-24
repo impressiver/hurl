@@ -9,9 +9,9 @@ little bit easier.
 
 Todo
 -----
-[] Implement response parser
-[] Log raw http format to make re-running requests simple
-[] Web console
+- [ ]  Fully implement request/response parsers 
+- [ ]  Log raw http format to make re-running requests simple 
+- [ ]  Web console
 
 Usage
 -----
