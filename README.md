@@ -5,8 +5,6 @@ A simple debugging proxy that accepts HTTP requests, logs them, and forwards
 to the original destination. It makes debugging server-server API requests a
 little bit easier.
 
-*** Still a work in progress. *** 
-
 Todo
 -----
 - [ ]  Fully implement request/response parsers 
