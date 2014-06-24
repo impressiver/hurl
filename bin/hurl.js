@@ -2,7 +2,6 @@
 
 var program = require('commander'),
     colors = require('colors'),
-    portfinder = require('portfinder'),
     hurl = require('../lib');
 
 var upstream, options, server;
@@ -27,9 +26,10 @@ program
   .version(hurl.version)
   .usage('hostname:port [options]')
   .option('-l, --listen <port>', 'port to listen for incoming requests (default: 8000)', parseInt, 8000)
-  .option('-t, --timeout <ms>', 'socket timeout in milliseconds (default: 120000)', parseInt, 120000)
+  .option('-t, --timeout <ms>', 'proxy timeout in milliseconds (default: 120000)', parseInt, 120000)
   .option('-f, --forward <hostname:port>', 'forward requests to an additional destination', host)
   .option('-x, --extra', 'enable x-headers (x-forwarded-for, x-forwarded-port, x-forwarded-proto)')
+  .option('-ws, --web-sockets', 'enable WebSockets proxy')
   .parse(process.argv);
 
 if (!program.args.length) {
@@ -41,14 +41,12 @@ if (!program.args.length) {
 //
 // Prepare options
 //
-upstream = host(program.args[0]);
+target = host(program.args[0]);
 options = {
-  upstream: upstream,
+  target: target,
   listen: program.listen,
-  timeout: program.timeout,
-  enable: {
-    xforward: !!program.extra
-  }
+  proxyTimeout: program.timeout,
+  xfwd: !!program.extra
 };
 
 if (program.forward) {

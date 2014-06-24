@@ -2,23 +2,6 @@
   "name": "hurl",
   "version": "0.0.0",
   "description": "Create a local proxy to log and forward any HTTP request/response",
-  "main": "./lib/index.js",
-  "dependencies": {
-    "commander": "~1.1.1",
-    "http-proxy": "~0.8.7",
-    "winston": "~0.7.2",
-    "colors": "~0.6.2",
-    "pkginfo": "~0.3.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "start": "node ./bin/hurl",
-    "test": "grunt test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/impressiver/hurl"
-  },
   "keywords": [
     "proxy",
     "http",
@@ -30,5 +13,20 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/impressiver/hurl/issues"
-  }
+  },
+  "main": "./lib/index.js",
+  "bin": {
+    "hurl": "./bin/hurl.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/impressiver/hurl"
+  },
+  "dependencies": {
+    "commander": "~2.2.0",
+    "http-proxy": "~1.1.4",
+    "winston": "~0.7.3",
+    "colors": "~0.6.2"
+  },
+  "devDependencies": {}
 }
